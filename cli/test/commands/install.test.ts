@@ -4,7 +4,7 @@ describe('install', () => {
   test
     .stdout()
     .stderr()
-    .command(['install', 'react', 'buttons', 'button-1'])
+    .command(['install', 'react', 'buttons', 'button-1', "-d='example'"])
     .it('runs install and shows the tech, category and recipe', (ctx) => {
       expect(ctx.stderr).to.contain('react');
       expect(ctx.stderr).to.contain('buttons');

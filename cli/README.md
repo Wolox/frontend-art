@@ -1,12 +1,12 @@
-@wolox/cookbook-cli
+@wolox/cookbook
 ===================
 
 Wolox Cookbook CLI
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@wolox/cookbook-cli.svg)](https://npmjs.org/package/@wolox/cookbook-cli)
-[![Downloads/week](https://img.shields.io/npm/dw/@wolox/cookbook-cli.svg)](https://npmjs.org/package/@wolox/cookbook-cli)
-[![License](https://img.shields.io/npm/l/@wolox/cookbook-cli.svg)](https://github.com/Wolox/frontend-cookbook/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@wolox/cookbook.svg)](https://npmjs.org/package/@wolox/cookbook)
+[![Downloads/week](https://img.shields.io/npm/dw/@wolox/cookbook.svg)](https://npmjs.org/package/@wolox/cookbook)
+[![License](https://img.shields.io/npm/l/@wolox/cookbook.svg)](https://github.com/Wolox/frontend-cookbook/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -15,11 +15,11 @@ Wolox Cookbook CLI
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g @wolox/cookbook-cli
+$ npm install -g @wolox/cookbook
 $ cookbook COMMAND
 running command...
 $ cookbook (-v|--version|version)
-@wolox/cookbook-cli/0.0.0 darwin-x64 node-v10.15.3
+@wolox/cookbook/0.1.0 darwin-x64 node-v10.15.3
 $ cookbook --help [COMMAND]
 USAGE
   $ cookbook COMMAND
@@ -50,18 +50,19 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1
 
 ## `cookbook install TECH CATEGORY RECIPE`
 
-install a recipe from the cookbook
+Installs a recipe from the cookbook
 
 ```
 USAGE
   $ cookbook install TECH CATEGORY RECIPE
 
 OPTIONS
-  -h, --help  show CLI help
+  -d, --directory=directory  Directory to install the recipe into
+  -h, --help                 show CLI help
 
 EXAMPLE
   $ cookbook install react buttons button-1
 ```
 
-_See code: [src/commands/install.ts](https://github.com/Wolox/frontend-cookbook/blob/v0.0.0/src/commands/install.ts)_
+_See code: [src/commands/install.ts](https://github.com/Wolox/frontend-cookbook/blob/v0.1.0/src/commands/install.ts)_
 <!-- commandsstop -->

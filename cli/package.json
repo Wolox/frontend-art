@@ -1,7 +1,7 @@
 {
-  "name": "@wolox/cookbook-cli",
+  "name": "@wolox/cookbook",
   "description": "Wolox Cookbook CLI",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Pablo Ferro @pabloferro",
   "bin": {
     "cookbook": "./bin/run"
