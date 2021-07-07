@@ -17,9 +17,13 @@
   margin-top: 30px;
 }
 
-.download-container {
-  flex: 1 0;
-  min-width: 300px;
+.install-instructions {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 14px;
+  background-color: $code-gray;
+  color: $black;
+  padding: 15px;
+  user-select: all;
 }
 
 .button-active {
@@ -51,8 +55,6 @@
   border-radius: 4px;
   font-weight: 600;
   height: 40px;
-  margin-right: 15px;
-  margin-left: 80px;
   padding: 10px;
   text-align: center;
   transition: all $transition-duration $transition-function;

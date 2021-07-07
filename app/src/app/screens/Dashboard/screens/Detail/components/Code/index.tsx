@@ -9,6 +9,7 @@ import styles from './styles.module.scss';
 
 interface Props {
   title: string;
+  downloadCommand?: string;
   source: TreeRecipe;
   onDownload: () => void;
 }
@@ -21,7 +22,7 @@ const defaultSelectedFile = {
   isBinary: false
 };
 
-function Code({ title, source, onDownload }: Props) {
+function Code({ title, source, downloadCommand, onDownload }: Props) {
   const [fileData, setFileData] = useState<SelectedFile>(defaultSelectedFile);
   const handleFileSelect = (data: SelectedFile = defaultSelectedFile) => {
     setFileData(data);
@@ -29,18 +30,25 @@ function Code({ title, source, onDownload }: Props) {
 
   return (
     <div className={styles.filesStructureContainer}>
-      <div className={styles.header}>
-        <div className={styles.downloadContainer}>
-          <button
-            className={`${styles.downloadButton} ${styles.codeTypeButton}`}
-            type="button"
-            onClick={onDownload}
-          >
-            Download code
-          </button>
+      <div className={`m-bottom-6 ${styles.header}`}>
+        <div className="row">
+          {downloadCommand && (
+            <div className="column start m-left-6">
+              <p className="subtitle m-bottom-2">Install using @wolox/cookbook CLI:</p>
+              <div className="m-bottom-2">
+                <pre className={styles.installInstructions}>{downloadCommand}</pre>
+              </div>
+            </div>
+          )}
+          <div className="column start m-left-6">
+            <p className="subtitle m-bottom-2">Download files instead:</p>
+            <button className={styles.downloadButton} type="button" onClick={onDownload}>
+              Download code
+            </button>
+          </div>
         </div>
-        <h3 className={styles.fileName}>{fileData.name}</h3>
       </div>
+      <h3 className={styles.fileName}>{fileData.name || '(Choose a file from the picker)'}</h3>
       <div className={styles.codeContainer}>
         <Tree handleSelect={handleFileSelect} source={source} title={title} activeId={fileData.id} />
         <div className={styles.codeSnippets}>
@@ -53,7 +61,7 @@ function Code({ title, source, onDownload }: Props) {
           ) : (
             <CodeSnippet
               className={`${styles.code} ${styles.codeVisible}`}
-              code={fileData.isBinary ? 'Archivo no soportado' : fileData.src}
+              code={fileData.isBinary ? 'Not supported file' : fileData.src}
               lang={fileData.lang}
             />
           )}

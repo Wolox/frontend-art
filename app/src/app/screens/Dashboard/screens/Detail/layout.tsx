@@ -9,12 +9,14 @@ import Code from './components/Code';
 import styles from './styles.module.scss';
 
 interface Props {
+  tech: string;
+  category: string;
   title: string;
   recipe: Recipe;
   onDownload: () => void;
 }
 
-function DetailContainer({ title, recipe, onDownload }: Props) {
+function DetailLayout({ tech, category, title, recipe, onDownload }: Props) {
   return (
     <>
       <div className={styles.upperSection}>
@@ -25,13 +27,18 @@ function DetailContainer({ title, recipe, onDownload }: Props) {
           <RecipePreview recipe={recipe} />
         </div>
       </div>
-      <Code title={title} source={recipe.source} onDownload={onDownload} />
+      <Code
+        downloadCommand={`npx @wolox/cookbook install ${tech} ${category} ${title}`}
+        title={title}
+        source={recipe.source}
+        onDownload={onDownload}
+      />
     </>
   );
 }
 
 export default withSpinner({
-  WrappedComponent: DetailContainer,
+  WrappedComponent: DetailLayout,
   typeLoading: 'wandering-cubes',
   colorSpinner: '#002363',
   classNameContainer: '',

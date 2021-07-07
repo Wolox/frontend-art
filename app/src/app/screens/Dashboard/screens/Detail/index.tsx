@@ -9,7 +9,7 @@ import { getRecipeCode } from '~utils/recipes';
 import { updateDownloadsCounter } from 'services/FirebaseService';
 import { TreeEntry, FileTypes } from '~constants/interfaces/recipe';
 
-import DetailsContainer from './layout';
+import DetailLayout from './layout';
 
 const zipEntry = (zip: JSZip, entry: TreeEntry) => {
   if (entry.type === FileTypes.blob) {
@@ -21,7 +21,11 @@ const zipEntry = (zip: JSZip, entry: TreeEntry) => {
 };
 
 function Detail() {
-  const { tech, category, recipe: recipeName } = useParams();
+  const { tech, category, recipe: recipeName } = useParams<{
+    tech: string;
+    category: string;
+    recipe: string;
+  }>();
   const { data, loading } = useQuery(getRecipeFiles(tech, category, recipeName));
   const recipeCode = getRecipeCode(data?.repository);
 
@@ -37,7 +41,14 @@ function Detail() {
   }, [recipeCode, recipeName, tech]);
 
   return (
-    <DetailsContainer loading={loading} title={recipeName} recipe={recipeCode} onDownload={downloadZip} />
+    <DetailLayout
+      loading={loading}
+      tech={tech}
+      category={category}
+      title={recipeName}
+      recipe={recipeCode}
+      onDownload={downloadZip}
+    />
   );
 }
 
